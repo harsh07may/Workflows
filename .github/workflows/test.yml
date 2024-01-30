@@ -4,8 +4,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull Code
-        uses: actions/checkout@v4@main
+      - name: Print Hello
+        uses: echo "Hello"
+      # - name: Pull Code
+      #   uses: actions/checkout@v4@main
       # - name: Install NodeJS
       #   uses: actions/setup-node@v4
       #   with:
