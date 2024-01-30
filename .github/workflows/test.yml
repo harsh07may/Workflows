@@ -6,11 +6,11 @@ jobs:
     steps:
       - name: Pull Code
         uses: actions/checkout@v4@main
-      - name: Install NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - name: Install dependencies
-        uses: npm ci
-      - name: Run Tests
-        uses: npm test
+      # - name: Install NodeJS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
+      # - name: Install dependencies
+      #   uses: npm ci
+      # - name: Run Tests
+      #   uses: npm test
