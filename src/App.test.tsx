@@ -1,9 +1,10 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
-import { it, describe } from "vitest";
+import { it, describe, expect } from "vitest";
 
 describe("App", () => {
   it("renders headline", () => {
     render(<App />);
+    expect(screen.getByText(/Not/i)).toBeDefined();
   });
 });
