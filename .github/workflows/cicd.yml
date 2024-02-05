@@ -4,6 +4,9 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,16 +19,33 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm test
-  deploy:
+  build:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Pull Code
         uses: actions/checkout@v4
-      - name: Install Node
-        uses: actions/setup-node@v4
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build Website
+        run: npm run build
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
         with:
-          node-version: 18
-      - run: npm ci
-      - run: npm run build
-      - run: echo "Deploying to AWS..."
+          name: dist
+          path:
+            dist
+            # dist
+            # package.json
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+      - name: List contents
+        run: ls
+      - name: Deploy
+        run: echo "Deploying to EC@"
