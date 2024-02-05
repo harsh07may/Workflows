@@ -1,9 +1,7 @@
 function App() {
   return (
     <div>
-      <label htmlFor="username">Username:</label>
-      <input type="text" name="" id="username" />
-      <p id="headline">"Hello"</p>;
+      <p id="headline">"Hello World"</p>;
     </div>
   );
 }
